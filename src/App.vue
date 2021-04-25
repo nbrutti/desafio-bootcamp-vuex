@@ -1,7 +1,8 @@
 <template>
-  <h1>Hello World</h1>
   <div class="container">
-    <component :is="$store.getters.$getContext" />
+    <div class="content">
+      <component :is="$store.getters.$getContext" />
+    </div>
   </div>
 </template>
 
@@ -20,4 +21,29 @@ export default defineComponent({
 })
 </script>
 
-<style></style>
+<style>
+body {
+  background: #eee;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 305px;
+  justify-content: center;
+  align-content: center;
+}
+
+.content {
+  height: 480px;
+  background: transparent
+    linear-gradient(180deg, #404451 0%, var(--unnamed-color-26282c) 100%) 0% 0%
+    no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #404451 0%, #26282c 100%) 0%
+    0% no-repeat padding-box;
+  color: #fff;
+  box-shadow: 0px 10px 30px #3f445266;
+  border-radius: 15px;
+  padding: 2rem 0.375rem;
+}
+</style>

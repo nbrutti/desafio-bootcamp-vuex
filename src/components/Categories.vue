@@ -25,14 +25,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { commonsMixin } from '@/mixins'
 import { Category } from '@/models'
 
 export default defineComponent({
   name: 'Categories',
+  mixins: [commonsMixin],
   methods: {
-    getAssetImage(imageName: string) {
-      return require(`@/assets/images/${imageName}`)
-    },
     handleCategory(category: Category) {
       console.log(`Mudando o contexto p/ a categoria ${category.title}`)
       this.$store.dispatch('setCurrentCategory', category)

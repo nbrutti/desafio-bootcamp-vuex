@@ -23,14 +23,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { commonsMixin } from '@/mixins'
 import { Category } from '@/models'
 
 export default defineComponent({
   name: 'Questions',
+  mixins: [commonsMixin],
   methods: {
-    getAssetImage(imageName: string) {
-      return require(`@/assets/images/${imageName}`)
-    },
     goBack() {
       this.$store.dispatch('setContext', 'Categories')
     }

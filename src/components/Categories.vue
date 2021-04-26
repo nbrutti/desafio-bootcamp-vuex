@@ -11,7 +11,11 @@
     </div>
 
     <ul class="items">
-      <li v-for="category in $getCategories" :key="category.id">
+      <li
+        @click="handleCategory(category)"
+        v-for="category in $getCategories"
+        :key="category.id"
+      >
         <img :src="getAssetImage(category.icon)" :alt="category.title" />
         {{ category.title }}
       </li>
@@ -28,6 +32,11 @@ export default defineComponent({
   methods: {
     getAssetImage(imageName: string) {
       return require(`@/assets/images/${imageName}`)
+    },
+    handleCategory(category: Category) {
+      console.log(`Mudando o contexto p/ a categoria ${category.title}`)
+      this.$store.dispatch('setCurrentCategory', category)
+      this.$store.dispatch('setContext', 'Questions')
     }
   },
   computed: {

@@ -1,11 +1,12 @@
 import { createStore } from 'vuex'
-import { Context, Category } from '@/models'
+import { Context, Category, Question } from '@/models'
 import { faqCategories } from '@/mocks/api.json'
 
 export default createStore({
   state: {
     categories: [] as Category[],
     currentCategory: {} as Category,
+    currentQuestion: {} as Question,
     context: 'Categories' as Context
   },
   mutations: {
@@ -14,6 +15,9 @@ export default createStore({
     },
     SET_CURRENT_CATEGORY(state, payload: Category) {
       state.currentCategory = payload
+    },
+    SET_CURRENT_QUESTION(state, payload: Question) {
+      state.currentQuestion = payload
     },
     SET_CONTEXT(state, payload: Context) {
       state.context = payload
@@ -27,8 +31,10 @@ export default createStore({
       commit('SET_CONTEXT', context)
     },
     setCurrentCategory({ commit }, category: Category) {
-      console.log(category)
       commit('SET_CURRENT_CATEGORY', category)
+    },
+    setCurrentQuestion({ commit }, question: Question) {
+      commit('SET_CURRENT_QUESTION', question)
     }
   },
   getters: {
@@ -40,6 +46,9 @@ export default createStore({
     },
     $getCurrentCategory({ currentCategory }): Category {
       return currentCategory
+    },
+    $getCurrentQuestion({ currentQuestion }): Question {
+      return currentQuestion
     }
   }
 })

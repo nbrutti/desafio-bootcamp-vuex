@@ -10,12 +10,14 @@
 import { defineComponent } from 'vue'
 import Categories from '@/components/Categories.vue'
 import Questions from '@/components/Questions.vue'
+import Response from '@/components/Response.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     Categories,
-    Questions
+    Questions,
+    Response
   },
   created() {
     this.$store.dispatch('fetchCategories')

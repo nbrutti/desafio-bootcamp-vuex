@@ -14,7 +14,11 @@
     </header>
 
     <ul class="items">
-      <li v-for="question in category.questions" :key="question.id">
+      <li
+        @click="handleQuestion(question)"
+        v-for="question in category.questions"
+        :key="question.id"
+      >
         {{ question.title }}
       </li>
     </ul>
@@ -24,7 +28,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { commonsMixin } from '@/mixins'
-import { Category } from '@/models'
+import { Category, Question } from '@/models'
 
 export default defineComponent({
   name: 'Questions',
@@ -32,6 +36,11 @@ export default defineComponent({
   methods: {
     goBack() {
       this.$store.dispatch('setContext', 'Categories')
+    },
+    handleQuestion(question: Question) {
+      console.log(`Mudando o contexto p/ a questão '${question.title}'`)
+      this.$store.dispatch('setCurrentQuestion', question)
+      this.$store.dispatch('setContext', 'Response')
     }
   },
   data() {
